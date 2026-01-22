@@ -21,6 +21,23 @@ Powerful AI coding assistants with tool calling capabilities:
 
 Choose between local models (privacy, offline) or cloud models (superior performance, like Claude Sonnet).
 
+## Example Usage
+
+Below are examples of the setup in action with different combinations of tools and models:
+
+### OpenCode CLI + Ollama + qwen3-coder:480b-cloud
+
+<img width="1881" height="922" alt="print_cloud" src="https://github.com/user-attachments/assets/838ed73a-7a13-444f-ae99-a8c282261cba" />
+
+### OpenCode GUI + Ollama + qwen3-coder:16k
+
+<img width="1914" height="1080" alt="print1" src="https://github.com/user-attachments/assets/52c404d3-7267-40f0-9895-1516ecc5358b" />
+
+### Crush CLI + Ollama + qwen3-coder:16k
+
+<img width="1912" height="926" alt="crush_cli" src="https://github.com/user-attachments/assets/f20bb604-586e-46d6-b80e-761d6fd195f4" />
+
+
 ## Quick Installation
 
 ### Install Ollama:
@@ -117,24 +134,3 @@ curl -s http://localhost:11434/v1/chat/completions \
     }]
   }' | jq '.choices[0].message'
 ```
-
-
-
-
-
-## Example Usage
-
-Below are examples of the setup in action with different combinations of tools and models:
-
-### OpenCode CLI + Ollama + qwen3-coder:480b-cloud
-
-![OpenCode CLI with cloud model](images/opencode-cli-cloud.png)
-
-### OpenCode GUI + Ollama + qwen3-coder:16k
-
-![OpenCode GUI with local model](images/opencode-gui-local.png)
-
-### Crush CLI + Ollama + qwen3-coder:16k
-
-![Crush CLI with local model](images/crush-cli-local.png)
-
