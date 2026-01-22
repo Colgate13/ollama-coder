@@ -1,0 +1,62 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "default_provider": "ollama",
+  "providers": {
+    "ollama": {
+      "type": "openai-compat",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "api_key": "ollama",
+      "models": [
+        {
+          "id": "qwen3-coder:480b-cloud",
+          "name": "Qwen3 Coder Cloud",
+          "context_window": 16384,
+          "default_max_tokens": -1,
+          "supports_tools": true
+        },
+        {
+          "id": "qwen3:14b-16k",
+          "name": "Qwen3 14B 16K",
+          "context_window": 16384,
+          "default_max_tokens": -1,
+          "supports_tools": true
+        },
+        {
+          "id": "qwen3-coder:16k",
+          "name": "Qwen3 Coder 16K",
+          "context_window": 16384,
+          "default_max_tokens": -1,
+          "supports_tools": true
+        },
+        {
+          "id": "gpt-oss:120b-cloud",
+          "name": "GPT-OSS Cloud",
+          "context_window": 16384,
+          "default_max_tokens": -1,
+          "supports_tools": true
+        },
+        {
+          "id": "gpt-oss:16k",
+          "name": "GPT-OSS 16K",
+          "context_window": 16384,
+          "default_max_tokens": -1,
+          "supports_tools": true
+        },
+        {
+          "id": "devstral-2:123b-cloud",
+          "name": "Devstral-2 Cloud",
+          "context_window": 16384,
+          "default_max_tokens": -1,
+          "supports_tools": true
+        },
+        {
+          "id": "minimax-m2.1:cloud",
+          "name": "MiniMax M2.1 Cloud",
+          "context_window": 16384,
+          "default_max_tokens": -1,
+          "supports_tools": false
+        }
+      ]
+    }
+  }
+}
