@@ -22,7 +22,7 @@
         "qwen3-coder:16k": {
           "name": "Qwen3 Coder 16K",
           "tools": true,
-          "reasoning": true
+          "reasoning": false
         },
         "gpt-oss:120b-cloud": {
           "name": "GPT-OSS Cloud",

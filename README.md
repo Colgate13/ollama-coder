@@ -1,6 +1,6 @@
 # Local AI Coding Setup with Ollama, Crush, and OpenCode
 
-This guide explains how to set up local AI coding environments using Ollama with tool calling capabilities in both Crush and OpenCode interfaces.
+Set up AI coding environments using Ollama with tool calling capabilities in both Crush and OpenCode interfaces. Choose between local models for privacy or cloud models for top-tier performance.
 
 ## Table of Contents
 
@@ -10,15 +10,16 @@ This guide explains how to set up local AI coding environments using Ollama with
 4. [Increasing Token Limits](#increasing-token-limits)
 5. [Configuration Files](#configuration-files)
 6. [Testing Your Setup](#testing-your-setup)
+7. [Example Usage](#example-usage)
 
 ## Overview
 
-This setup enables powerful AI coding assistants to run entirely on your local machine with full tool calling capabilities. We'll be configuring:
-- **Ollama**: As the local LLM inference engine
-- **Crush**: As a terminal-based AI assistant
-- **OpenCode**: As a GUI-based AI coding assistant
+Powerful AI coding assistants with tool calling capabilities:
+- **Ollama**: Local LLM inference engine
+- **Crush**: Terminal-based AI assistant
+- **OpenCode**: GUI-based AI coding assistant
 
-Both Crush and OpenCode will be configured to work with the same Ollama models that support structured tool calling.
+Choose between local models (privacy, offline) or cloud models (superior performance, like Claude Sonnet).
 
 ## Quick Installation
 
@@ -41,23 +42,24 @@ Not all models support structured tool calling. For tool calling to work properl
 
 ### Supported Models:
 
-| Model ID | Display Name | Tools Support | Attachments | Reasoning |
-|----------|--------------|---------------|-------------|-----------|
-| qwen3-coder:480b-cloud | Qwen3 Coder Cloud | ✅ | ✅ | ✅ |
-| qwen3:14b-16k | Qwen3 14B 16K | ✅ | ❌ | ✅ |
-| qwen3-coder:16k | Qwen3 Coder 16K | ✅ | ❌ | ✅ |
-| gpt-oss:120b-cloud | GPT-OSS Cloud | ✅ | ✅ | ✅ |
-| gpt-oss:16k | GPT-OSS 16K | ✅ | ❌ | ❌ |
-| devstral-2:123b-cloud | Devstral-2 Cloud | ✅ | ✅ | ✅ |
-| minimax-m2.1:cloud | MiniMax M2.1 Cloud | ❌ | ❌ | ❌ |
+| Model ID | Display Name | Type | Tools | Attachments | Reasoning |
+|----------|--------------|------|-------|-------------|-----------|
+| qwen3-coder:480b-cloud | Qwen3 Coder Cloud | Cloud | ✅ | ✅ | ✅ |
+| qwen3:14b-16k | Qwen3 14B 16K | Local | ✅ | ❌ | ✅ |
+| qwen3-coder:16k | Qwen3 Coder 16K | Local | ✅ | ❌ | ✅ |
+| gpt-oss:120b-cloud | GPT-OSS Cloud | Cloud | ✅ | ✅ | ✅ |
+| gpt-oss:16k | GPT-OSS 16K | Local | ✅ | ❌ | ❌ |
+| devstral-2:123b-cloud | Devstral-2 Cloud | Cloud | ✅ | ✅ | ✅ |
+| minimax-m2.1:cloud | MiniMax M2.1 Cloud | Cloud | ❌ | ❌ | ❌ |
 
 ### Downloading Models:
 
+Download local models manually. Cloud models (with `-cloud` suffix) are accessed remotely:
+
 ```bash
-# Download any of the supported models
+# Download local models only
 ollama pull qwen3:14b
 ollama pull qwen3-coder:latest
-# etc.
 ```
 
 ## Increasing Token Limits
@@ -77,12 +79,10 @@ ollama create qwen3:14b-16k -f /tmp/Modelfile
 
 ## Configuration Files
 
-This repository includes sample configuration files for both Crush and OpenCode.
-
-### Copy Configuration Files:
+Configuration files for Crush and OpenCode support both local and cloud models:
 
 ```bash
-# Create config directories if they don't exist
+# Create config directories
 mkdir -p ~/.config/opencode ~/.config/crush
 
 # Copy configuration files
@@ -118,15 +118,23 @@ curl -s http://localhost:11434/v1/chat/completions \
   }' | jq '.choices[0].message'
 ```
 
-Expected successful response:
-```json
-{
-  "role": "assistant",
-  "content": "",
-  "tool_calls": [{
-    "function": {
-      "name": "bash",
-      "arguments": "{\"command\":\"ls\",\"description\":\"List files\"}"
-    }
-  }]
-}
+
+
+
+
+## Example Usage
+
+Below are examples of the setup in action with different combinations of tools and models:
+
+### OpenCode CLI + Ollama + qwen3-coder:480b-cloud
+
+![OpenCode CLI with cloud model](images/opencode-cli-cloud.png)
+
+### OpenCode GUI + Ollama + qwen3-coder:16k
+
+![OpenCode GUI with local model](images/opencode-gui-local.png)
+
+### Crush CLI + Ollama + qwen3-coder:16k
+
+![Crush CLI with local model](images/crush-cli-local.png)
+
